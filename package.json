@@ -1,0 +1,34 @@
+{
+  "name": "d3hiring-nodejs-api-assessment",
+  "version": "0.1.0",
+  "description": "Technical assessment submission to D3 Hiring",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdgeJay/d3hiring-nodejs-api-assessment.git"
+  },
+  "keywords": [
+    "node.js",
+    "koa",
+    "restful",
+    "api",
+    "code",
+    "test",
+    "assessment"
+  ],
+  "author": "Wu Huijie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/issues"
+  },
+  "homepage": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment#readme",
+  "devDependencies": {
+    "lerna": "^3.19.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
