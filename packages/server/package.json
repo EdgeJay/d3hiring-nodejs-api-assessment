@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "Node.js server app for API endpoints",
+  "keywords": [
+    "node.js",
+    "restful",
+    "api"
+  ],
+  "author": "Wu Huijie <hjwu85@gmail.com>",
+  "homepage": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/tree/master/packages/server#readme",
+  "license": "MIT",
+  "main": "dist/server.js",
+  "directories": {
+    "dist": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdgeJay/d3hiring-nodejs-api-assessment.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/issues"
+  }
+}
