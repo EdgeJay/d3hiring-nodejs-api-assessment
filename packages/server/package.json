@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "@tchr/server",
   "version": "0.1.0",
   "description": "Node.js server app for API endpoints",
   "keywords": [
@@ -20,12 +20,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EdgeJay/d3hiring-nodejs-api-assessment.git"
+    "url": "git+https://github.com/EdgeJay/d3hiring-nodejs-api-assessment.git",
+    "directory": "packages/server"
+  },
+  "engines": {
+    "node": "10.16.3"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/issues"
+  },
+  "dependencies": {
+    "koa": "^2.11.0"
   }
 }

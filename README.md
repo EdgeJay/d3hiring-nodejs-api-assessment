@@ -1,6 +1,8 @@
 # d3hiring-nodejs-api-assessment
 Technical assessment submission to D3 Hiring
 
+For this assessment, all packages will be under `@tchr` namespace. `@tchr` is the system that assists teachers to perform administrative functions.
+
 ## Assessment goals
 
 ### Complusory objectives
