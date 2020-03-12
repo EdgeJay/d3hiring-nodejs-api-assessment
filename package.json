@@ -21,7 +21,7 @@
     "assessment"
   ],
   "engines": {
-    "node": "10.16.3"
+    "node": "12.16.1"
   },
   "author": "Wu Huijie",
   "license": "MIT",

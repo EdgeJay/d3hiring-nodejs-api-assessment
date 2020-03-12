@@ -29,7 +29,7 @@ For this assessment, all packages will be under `@tchr` namespace. `@tchr` is th
 
 Make sure the following are installed in development machine:
 
-- Node.js v10.16.3 (if `nvm` is available and required version is installed, use `nvm use` command)
+- Node.js v12.16.1 (if `nvm` is available and required version is installed, use `nvm use` command)
 - Yarn
 - [Hubflow](https://datasift.github.io/gitflow/TheHubFlowTools.html) (if you intend to add new branches)
 
