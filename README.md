@@ -21,9 +21,25 @@ Technical assessment submission to D3 Hiring
 
 - Create frontend web application that can allow teachers to perform administrative functions via browser.
 
-## Technical specifications
+## Getting started
 
-### Files and folder structure
+### System requirements
+
+Make sure the following are installed in development machine:
+
+- Node.js v10.16.3 (if `nvm` is available and required version is installed, use `nvm use` command)
+- Yarn
+
+### Installation steps
+
+Open terminal and run the following commands:
+
+1. cd to project root folder
+2. Run `yarn install` command
+3. cd to `packages/server` folder
+4. Run `yarn dev` command
+
+## Files and folder structure
 
 The repo is structured to be managed by [lerna.js](https://lerna.js.org/).
 

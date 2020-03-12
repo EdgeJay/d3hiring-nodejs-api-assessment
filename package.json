@@ -19,6 +19,9 @@
     "test",
     "assessment"
   ],
+  "engines": {
+    "node": "10.16.3"
+  },
   "author": "Wu Huijie",
   "license": "MIT",
   "bugs": {
