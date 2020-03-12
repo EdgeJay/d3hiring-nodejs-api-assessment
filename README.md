@@ -31,6 +31,7 @@ Make sure the following are installed in development machine:
 
 - Node.js v10.16.3 (if `nvm` is available and required version is installed, use `nvm use` command)
 - Yarn
+- [Hubflow](https://datasift.github.io/gitflow/TheHubFlowTools.html) (if you intend to add new branches)
 
 ### Installation steps
 
@@ -40,6 +41,10 @@ Open terminal and run the following commands:
 2. Run `yarn install` command
 3. cd to `packages/server` folder
 4. Run `yarn dev` command
+
+## Git
+
+Branches in this repo is maintained using `GitFlow` style. Hubflow provides add-on cli tools to existing `git` command to manage branches in `GitFlow` style.
 
 ## Files and folder structure
 
