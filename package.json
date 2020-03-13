@@ -5,6 +5,7 @@
   "description": "Technical assessment submission to D3 Hiring",
   "main": "index.js",
   "scripts": {
+    "lint": "lerna run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -24,9 +24,10 @@
     "directory": "packages/server"
   },
   "engines": {
-    "node": "12.16.1"
+    "node": "13.10.1"
   },
   "scripts": {
+    "lint": "eslint -c ./.eslintrc.js \"./src/**/*.js\"",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -34,5 +35,20 @@
   },
   "dependencies": {
     "koa": "^2.11.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.3"
   }
 }

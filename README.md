@@ -23,13 +23,19 @@ For this assessment, all packages will be under `@tchr` namespace. `@tchr` is th
 
 - Create frontend web application that can allow teachers to perform administrative functions via browser.
 
+## Tasks
+
+| Task | Completed |
+|---|---|
+| Write unit tests | No |
+
 ## Getting started
 
 ### System requirements
 
 Make sure the following are installed in development machine:
 
-- Node.js v12.16.1 (if `nvm` is available and required version is installed, use `nvm use` command)
+- Node.js v13.10.1 (if `nvm` is available and required version is installed, use `nvm use` command)
 - Yarn
 - [Hubflow](https://datasift.github.io/gitflow/TheHubFlowTools.html) (if you intend to add new branches)
 
@@ -51,3 +57,13 @@ Branches in this repo is maintained using `GitFlow` style. Hubflow provides add-
 The repo is structured to be managed by [lerna.js](https://lerna.js.org/).
 
 Server-side related code are to be kept in `server` package, while client-side related code are to be kept in `client` package. Shared code can be stored under `common` package, that is an internal package and should not be published.
+
+## Known issues
+
+### ESM module loader is experimental
+
+When server app is initialised, the following message will appear:
+
+`(node:35224) ExperimentalWarning: The ESM module loader is experimental.`
+
+This message appears since the server app is developed as an ESM module, and running/loading of ESM modules are still part of experimental features. It should go away once ESM is part of Node.js stable release.
