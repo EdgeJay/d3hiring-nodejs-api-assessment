@@ -1,0 +1,37 @@
+{
+  "name": "database",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Database migration and seed files",
+  "keywords": [
+    "knex",
+    "js",
+    "mysql",
+    "database"
+  ],
+  "author": "Wu Huijie <hjwu85@gmail.com>",
+  "homepage": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/tree/master/packages/database#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdgeJay/d3hiring-nodejs-api-assessment.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/issues"
+  },
+  "dependencies": {
+    "knex": "^0.20.11",
+    "mysql": "^2.18.1"
+  }
+}

@@ -10,6 +10,7 @@
   "author": "Wu Huijie <hjwu85@gmail.com>",
   "homepage": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/tree/master/packages/server#readme",
   "license": "MIT",
+  "type": "module",
   "main": "dist/server.js",
   "directories": {
     "dist": "dist",
@@ -27,14 +28,17 @@
     "node": "13.10.1"
   },
   "scripts": {
-    "lint": "eslint -c ./.eslintrc.js \"./src/**/*.js\"",
+    "lint": "eslint \"./src/**/*.js\"",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/issues"
   },
   "dependencies": {
-    "koa": "^2.11.0"
+    "dotenv": "^8.2.0",
+    "knex": "^0.20.11",
+    "koa": "^2.11.0",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.23.0",
