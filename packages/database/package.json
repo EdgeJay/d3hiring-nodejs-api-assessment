@@ -25,7 +25,8 @@
     "url": "git+https://github.com/EdgeJay/d3hiring-nodejs-api-assessment.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "migrate": "knex migrate:rollback --all && knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "bugs": {
     "url": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/issues"

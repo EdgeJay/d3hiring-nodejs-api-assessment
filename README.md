@@ -99,18 +99,6 @@ Starts `server` app in development mode
 
 Creates production build for all packages.
 
-### yarn run init:db
-
-// TODO. Setup script
-
-Setups database, and then runs `yarn run reset:db` to start migration and seeding.
-
-### yarn run reset:db
-
-// TODO. Setup script
-
-Resets database used by `server` app, including migration and seeding.
-
 ## Git
 
 Branches in this repo is maintained using `GitFlow` style. Hubflow provides add-on cli tools to existing `git` command to manage branches in `GitFlow` style.
