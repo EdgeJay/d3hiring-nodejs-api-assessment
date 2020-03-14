@@ -73,13 +73,13 @@ Open terminal and run the following commands:
 
 ## Assumptions
 
-// TODO. Any assumptions about app behaviours can be added here
+> TODO. Any assumptions about app behaviours can be added here
 
 ## Available scripts
 
 ### yarn run test
 
-// TODO. Add ava unit tests
+> TODO. Add ava unit tests
 
 Runs unit tests on all packages.
 
@@ -87,15 +87,9 @@ Runs unit tests on all packages.
 
 Runs eslint checks on all packages.
 
-### yarn run dev
-
-// TODO. Setup script
-
-Starts `server` app in development mode
-
 ### yarn run build
 
-// TODO. Setup script
+> TODO. Setup script
 
 Creates production build for all packages.
 
@@ -114,7 +108,7 @@ The repo is structured to be managed by [lerna.js](https://lerna.js.org/).
 
 ## Remote server setup
 
-// TODO. Add diagrams.
+> TODO. Add diagrams.
 
 ## Known issues
 

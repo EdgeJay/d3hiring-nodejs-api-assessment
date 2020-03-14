@@ -11,7 +11,7 @@
   "homepage": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/tree/master/packages/server#readme",
   "license": "MIT",
   "type": "module",
-  "main": "dist/server.js",
+  "main": "src/index.js",
   "directories": {
     "dist": "dist",
     "test": "__tests__"
@@ -29,6 +29,7 @@
   },
   "scripts": {
     "lint": "eslint \"./src/**/*.js\"",
+    "dev": "nodemon -L",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -53,6 +54,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "typescript": "^3.8.3"
   }

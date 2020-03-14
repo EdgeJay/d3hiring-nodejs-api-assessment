@@ -1,11 +1,9 @@
 # `server`
 
-> TODO: description
+APIs server app powered by Node.js
 
-## Usage
+## How Tos
 
-```
-const server = require('server');
+### Start server (development mode)
 
-// TODO: DEMONSTRATE API
-```
+`yarn run dev`
