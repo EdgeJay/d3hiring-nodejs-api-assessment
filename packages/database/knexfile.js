@@ -1,10 +1,13 @@
-// Update with your config settings.
+const dotenvPath = require('find-config')('.env');
 
-require('dotenv').config();
+require('dotenv').config({
+  path: dotenvPath,
+});
 
 const { DB_CLIENT: client } = process.env;
 
 const DEFAULT_MIGRATION_TABLE = 'knex_migrations';
+const DEFAULT_MIGRATION_STUB = 'migration.stub.js';
 
 const getDbConfig = () => ({
   host: process.env.DB_HOST,
@@ -18,6 +21,7 @@ const getConfigForEnvironment = () => ({
   connection: getDbConfig(),
   migrations: {
     tableName: DEFAULT_MIGRATION_TABLE,
+    stub: DEFAULT_MIGRATION_STUB,
   },
 });
 

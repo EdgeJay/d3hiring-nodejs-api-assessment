@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "find-config": "^1.0.0",
     "knex": "^0.20.11",
     "koa": "^2.11.0",
     "mysql": "^2.18.1"

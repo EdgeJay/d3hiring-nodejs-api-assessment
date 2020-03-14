@@ -13,7 +13,7 @@ const env = initDotEnv();
 const db = initDatabase(getDatabaseConfig(env));
 
 async function test() {
-  const result = await db('foo').select();
+  const result = await db('teacher').select();
   console.log(result[0].id, result[0].name);
   // db.destroy();
 }

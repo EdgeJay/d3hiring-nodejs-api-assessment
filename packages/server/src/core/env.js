@@ -1,7 +1,7 @@
-import path from 'path';
+import findConfig from 'find-config';
 import dotenv from 'dotenv';
 
-const DEFAULT_PATH = path.resolve(process.cwd(), './.env');
+const DEFAULT_PATH = findConfig('.env');
 
 export function initDotEnv(dotenvPath = DEFAULT_PATH) {
   const { error, parsed } = dotenv.config({

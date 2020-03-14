@@ -1,0 +1,55 @@
+exports.seed = knex => {
+  // Deletes ALL existing entries
+  return knex('teacher_student')
+    .del()
+    .then(() => {
+      // Inserts seed entries
+      return knex('teacher_student').insert([
+        { id: 1, teacher_id: 1, student_id: 1 },
+        { id: 2, teacher_id: 1, student_id: 2 },
+        { id: 3, teacher_id: 1, student_id: 3 },
+        { id: 4, teacher_id: 1, student_id: 14 },
+        { id: 5, teacher_id: 2, student_id: 1 },
+        { id: 6, teacher_id: 2, student_id: 2 },
+        { id: 7, teacher_id: 3, student_id: 13 },
+        { id: 8, teacher_id: 3, student_id: 15 },
+        { id: 9, teacher_id: 3, student_id: 1 },
+        { id: 10, teacher_id: 3, student_id: 17 },
+        { id: 11, teacher_id: 3, student_id: 26 },
+        { id: 12, teacher_id: 3, student_id: 21 },
+        { id: 13, teacher_id: 3, student_id: 12 },
+        { id: 14, teacher_id: 4, student_id: 20 },
+        { id: 15, teacher_id: 4, student_id: 8 },
+        { id: 16, teacher_id: 4, student_id: 22 },
+        { id: 17, teacher_id: 4, student_id: 24 },
+        { id: 18, teacher_id: 4, student_id: 10 },
+        { id: 19, teacher_id: 4, student_id: 26 },
+        { id: 20, teacher_id: 5, student_id: 11 },
+        { id: 21, teacher_id: 5, student_id: 8 },
+        { id: 22, teacher_id: 5, student_id: 23 },
+        { id: 23, teacher_id: 5, student_id: 3 },
+        { id: 24, teacher_id: 6, student_id: 11 },
+        { id: 25, teacher_id: 6, student_id: 8 },
+        { id: 26, teacher_id: 6, student_id: 23 },
+        { id: 27, teacher_id: 6, student_id: 3 },
+        { id: 28, teacher_id: 7, student_id: 12 },
+        { id: 29, teacher_id: 7, student_id: 7 },
+        { id: 30, teacher_id: 7, student_id: 25 },
+        { id: 31, teacher_id: 7, student_id: 2 },
+        { id: 32, teacher_id: 8, student_id: 18 },
+        { id: 33, teacher_id: 8, student_id: 23 },
+        { id: 34, teacher_id: 8, student_id: 19 },
+        { id: 35, teacher_id: 9, student_id: 19 },
+        { id: 36, teacher_id: 9, student_id: 16 },
+        { id: 37, teacher_id: 9, student_id: 18 },
+        { id: 38, teacher_id: 9, student_id: 4 },
+        { id: 39, teacher_id: 10, student_id: 9 },
+        { id: 40, teacher_id: 10, student_id: 5 },
+        { id: 41, teacher_id: 10, student_id: 6 },
+        { id: 42, teacher_id: 6, student_id: 7 },
+        { id: 43, teacher_id: 8, student_id: 25 },
+        { id: 44, teacher_id: 1, student_id: 5 },
+        { id: 45, teacher_id: 5, student_id: 5 },
+      ]);
+    });
+};

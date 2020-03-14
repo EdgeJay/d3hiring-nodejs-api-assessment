@@ -19,8 +19,9 @@ Open terminal and run the following commands:
 
 1. cd to project root folder
 2. Run `yarn install` command
-3. cd to `packages/server` folder
-4. Run `yarn dev` command
+3. Run `yarn run init:db` command
+4. cd to `packages/server` folder
+5. Run `yarn run dev` command
 
 ## Assessment goals
 
@@ -64,6 +65,12 @@ Open terminal and run the following commands:
 | Create dev script | In Progress |
 | Create build script | No |
 
+## Security concerns
+
+- Implement API keys?
+- Implement CSRF?
+- Rate limiting?
+
 ## Assumptions
 
 // TODO. Any assumptions about app behaviours can be added here
@@ -82,13 +89,25 @@ Runs eslint checks on all packages.
 
 ### yarn run dev
 
+// TODO. Setup script
+
 Starts `server` app in development mode
 
 ### yarn run build
 
+// TODO. Setup script
+
 Creates production build for all packages.
 
+### yarn run init:db
+
+// TODO. Setup script
+
+Setups database, and then runs `yarn run reset:db` to start migration and seeding.
+
 ### yarn run reset:db
+
+// TODO. Setup script
 
 Resets database used by `server` app, including migration and seeding.
 
@@ -100,7 +119,10 @@ Branches in this repo is maintained using `GitFlow` style. Hubflow provides add-
 
 The repo is structured to be managed by [lerna.js](https://lerna.js.org/).
 
-Server-side related code are to be kept in `server` package, while client-side related code are to be kept in `client` package. Shared code can be stored under `common` package, that is an internal package and should not be published.
+- Server-side related code are kept in `server` package.
+- Client-side related code are kept in `client` package.
+- Shared code can be stored under `common` package, that is an internal package and should not be published.
+- Database related code, such as migrations and seeding are kept in `database` package.
 
 ## Remote server setup
 
