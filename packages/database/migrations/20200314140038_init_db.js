@@ -1,14 +1,17 @@
 exports.up = knex => {
   return knex.schema
     .createTable('teacher', table => {
-      table.increments('id');
+      table.uuid('id').notNullable();
       table.string('first_name', 255).notNullable();
       table.string('last_name', 255).notNullable();
       table.string('email', 320).notNullable();
       table.timestamps(false, true);
     })
+    .alterTable('teacher', table => {
+      table.unique('id');
+    })
     .createTable('student', table => {
-      table.increments('id');
+      table.uuid('id').notNullable();
       table.string('first_name', 255).notNullable();
       table.string('last_name', 255).notNullable();
       table.string('email', 320).notNullable();
@@ -18,16 +21,17 @@ exports.up = knex => {
         .defaultTo('active');
       table.timestamps(false, true);
     })
+    .alterTable('student', table => {
+      table.unique('id');
+    })
     .createTable('teacher_student', table => {
-      table.increments('id');
+      table.uuid('id').notNullable();
       table
-        .integer('teacher_id')
-        .unsigned()
+        .uuid('teacher_id')
         .notNullable()
         .references('teacher.id');
       table
-        .integer('student_id')
-        .unsigned()
+        .uuid('student_id')
         .notNullable()
         .references('student.id');
     });

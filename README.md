@@ -70,6 +70,11 @@ Open terminal and run the following commands:
 - Implement API keys?
 - Implement CSRF?
 - Rate limiting?
+- SQL injection
+- Remote code execution
+- 405 method not allowed
+- Check content-type header, if not match return 406 Not Acceptable
+- Use uuid instead of auto incrementing identifiers
 
 ## Assumptions
 
