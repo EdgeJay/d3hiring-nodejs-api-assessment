@@ -1,0 +1,15 @@
+{
+  "verbose": true,
+  "ignore": [
+    "__tests__",
+    "dist/*",
+    "node_modules/*"
+  ],
+  "watch": [
+    "src/*"
+  ],
+  "execMap": {
+    "js": "yarn run lint && node"
+  },
+  "ext": "js json"
+}
