@@ -1,8 +1,6 @@
 import findConfig from 'find-config';
 import dotenv, { DotenvParseOutput } from 'dotenv';
 
-const DEFAULT_PATH = findConfig('.env');
-
 export interface ParsedOutput extends DotenvParseOutput {
   NODE_PORT: string;
   DB_CLIENT: string;
@@ -11,6 +9,12 @@ export interface ParsedOutput extends DotenvParseOutput {
   DB_PASS: string;
   DB_NAME: string;
 }
+
+export function locateDotEnvPath(filename: string): string {
+  return findConfig(filename);
+}
+
+const DEFAULT_PATH = locateDotEnvPath('.env');
 
 /**
  * Loads .env file from specified path and returns parsed dotenv variables

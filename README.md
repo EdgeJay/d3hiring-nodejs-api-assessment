@@ -61,7 +61,7 @@ Open terminal and run the following commands:
 | Task | Completed |
 |---|---|
 | Setup eslint | Done |
-| Write unit tests | No |
+| Write unit tests | In Progress |
 | Create server app | In Progress |
 | Create client app | No |
 | Create test script | Yes |
@@ -87,8 +87,6 @@ Open terminal and run the following commands:
 ## Available scripts
 
 ### yarn run test
-
-> TODO. Add ava unit tests
 
 Runs unit tests on all packages.
 
@@ -130,6 +128,12 @@ Database query builder, migration and seeding.
 ### dotenv
 
 Loads app environment variables from .env files.
+
+## Unit tests
+
+This repo uses [ava](https://github.com/avajs/ava) as the test runner.
+
+For packages that use Typescript, files must be compiled into Javascript first before running unit tests, as current methods to get `ava` to run tests on Typescript files on-the=fly are not straightforward.
 
 ## Remote server setup
 
