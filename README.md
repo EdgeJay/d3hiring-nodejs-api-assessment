@@ -175,3 +175,4 @@ https://2ality.com/2019/04/nodejs-esm-impl.html
 https://owasp.org/www-project-top-ten/
 https://www.templarbit.com/blog/2018/01/10/api-security-checklist/
 https://github.com/DefinitelyTyped/DefinitelyTyped/issues/32006#issuecomment-453111178
+https://github.com/nodejs/node/issues/30927#issuecomment-575998045
