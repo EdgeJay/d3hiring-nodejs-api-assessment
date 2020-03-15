@@ -1,23 +1,26 @@
-import { initDotEnv, getDatabaseConfig } from './core/env.js';
-import { initDatabase } from './core/database.js';
+import Koa from 'koa';
+import { initDotEnv, getNodePort, getDatabaseConfig } from './core/env.js';
+import Database from './core/Database.js';
+import { initRoutes } from './core/routes.js';
 
-const env = initDotEnv();
+async function start() {
+  // create new Koa instance that will be serving endpoints from this app
+  const app = new Koa();
 
-/**
- * env variables are deliberately passed into subsequent function calls
- * to prevent direct references to process.env in functions, which can
- * make testing difficult. It also makes parts of codebase tightly coupled
- * with process.env.
- */
+  // fetch and setup dotenv vars
+  const env = initDotEnv();
 
-const db = initDatabase(getDatabaseConfig(env));
+  /**
+   * env variables are deliberately passed into subsequent function calls
+   * to prevent direct references to process.env in functions, which can
+   * make testing difficult. It also makes parts of codebase tightly coupled
+   * with process.env.
+   */
+  Database.getInstance().init(getDatabaseConfig(env));
 
-/*
-async function test() {
-  const result = await db('teacher').select();
-  console.log(result[0].id, result[0].first_name, result[0].last_name);
-  // db.destroy();
+  initRoutes(app);
+
+  app.listen(getNodePort(env));
 }
 
-test();
-*/
+start();

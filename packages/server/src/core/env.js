@@ -17,6 +17,10 @@ export function initDotEnv(dotenvPath = DEFAULT_PATH) {
   return parsed;
 }
 
+export function getNodePort({ NODE_PORT }) {
+  return NODE_PORT;
+}
+
 export function getDatabaseConfig({
   DB_CLIENT: client,
   DB_HOST: host,

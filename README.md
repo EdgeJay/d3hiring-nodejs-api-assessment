@@ -43,6 +43,10 @@ Open terminal and run the following commands:
 
 - Create frontend web application that can allow teachers to perform administrative functions via browser.
 
+### Optional stretch goal #3
+
+- Server-side rendered frontend web application.
+
 ## Tasks & user stories
 
 | # | User story | Completed |
@@ -110,6 +114,22 @@ The repo is structured to be managed by [lerna.js](https://lerna.js.org/).
 - Client-side related code are kept in `client` package.
 - Shared code can be stored under `common` package, that is an internal package and should not be published.
 - Database related code, such as migrations and seeding are kept in `database` package.
+
+## 3rd-party libraries
+
+This repo used the following 3rd-party libraries for various tasks:
+
+### Koa.js
+
+Backbone of server app. Handles routing, incoming/outgoing requests/responses. Very similar to Express.
+
+### Knex
+
+Database query builder, migration and seeding.
+
+### dotenv
+
+Loads app environment variables from .env files.
 
 ## Remote server setup
 
