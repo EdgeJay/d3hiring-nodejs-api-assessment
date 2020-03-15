@@ -36,5 +36,10 @@
     "find-config": "^1.0.0",
     "knex": "^0.20.11",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/sinon": "^7.5.2",
+    "ava": "^3.5.0",
+    "sinon": "^9.0.1"
   }
 }
