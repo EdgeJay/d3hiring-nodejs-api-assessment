@@ -1,13 +1,15 @@
+import Koa, { Next } from 'koa';
 import Router from '@koa/router';
 import bodyParser from 'koa-bodyparser';
-import { register } from '../controllers/api.js';
+import { register } from '../controllers/api';
+import { ExtendedContext, ExtendedMiddleware } from '../types/koaExtended';
 
 /**
  * This function will provide router that handles /api/* requests
  * Add api routes here
  */
-function initApiRoutes() {
-  const apiRouter = new Router();
+function initApiRoutes(): Router<{}, ExtendedMiddleware> {
+  const apiRouter = new Router<{}, ExtendedMiddleware>();
 
   apiRouter.post('/register', register);
 
@@ -20,9 +22,9 @@ function initApiRoutes() {
  */
 export function jsonResponseHelper() {
   // adds json response helper
-  return async (ctx, next) => {
-    ctx.json = ({ body, statusCode = 200 } = {}) => {
-      if (statusCode !== 204 || statusCode !== 205) {
+  return async (ctx: ExtendedContext, next: Next): Promise<void> => {
+    ctx.json = ({ body, statusCode = 200 } = {}): void => {
+      if (!(statusCode === 204 || statusCode === 205)) {
         ctx.body = body;
       }
       ctx.type = 'application/json;charset=utf-8';
@@ -38,13 +40,13 @@ export function jsonResponseHelper() {
  *
  * @param {object} app Koa app instance
  */
-export function initRoutes(app) {
+export function initRoutes(app: Koa): void {
   // bodyParser helps to parse request body and store it under ctx.request.body
   app.use(bodyParser());
 
   app.use(jsonResponseHelper());
 
-  const router = new Router();
+  const router = new Router<{}, ExtendedMiddleware>();
   const apiRouter = initApiRoutes();
 
   router.use('/api', apiRouter.routes(), apiRouter.allowedMethods());

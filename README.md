@@ -162,3 +162,17 @@ This causes eslint to fail when running `eslint` in packages that are defined as
 The above solution does not work well as it confuses node when it tries to locate libraries added via import statement. Instead of referring to `package.json` file in `packages/server`, it tried to search for dependencies declared in `packages/server/src`.
 
 Final solution is to add `"type": "module"` to `packages/server/package.json`, and move `.eslintrc.js` file to project root.
+
+### Importing without .js extension
+
+We are used to having tools and IDEs like webpack and VS code to automatically resolve file imports without including ".js" extension.
+
+For this project since I want to achieve as close as native code implementation as possible without augmenting code with additional polyfills and plugins as much as possible, to support resolution of extension-less file imports, I need to use --es-module-specifier-resolution=node flag when starting the server app with node.
+
+## References
+
+https://2ality.com/2019/04/nodejs-esm-impl.html
+https://owasp.org/www-project-top-ten/
+https://www.templarbit.com/blog/2018/01/10/api-security-checklist/
+https://github.com/DefinitelyTyped/DefinitelyTyped/issues/32006#issuecomment-453111178
+https://github.com/nodejs/node/issues/30927#issuecomment-575998045

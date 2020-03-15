@@ -11,7 +11,7 @@
   "homepage": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/tree/master/packages/server#readme",
   "license": "MIT",
   "type": "module",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "directories": {
     "dist": "dist",
     "test": "__tests__"
@@ -28,8 +28,10 @@
     "node": "13.10.1"
   },
   "scripts": {
+    "tsc": "tsc",
     "lint": "eslint \"./src/**/*.js\"",
-    "dev": "nodemon -L",
+    "dev": "concurrently \"tsc --watch\" \"nodemon -L\"",
+    "start": "node --es-module-specifier-resolution=node ./dist/index.js",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -45,8 +47,12 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "@types/koa": "^2.11.2",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa__router": "^8.0.2",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
+    "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
