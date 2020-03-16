@@ -16,15 +16,10 @@ exports.seed = async knex => {
 
   // fetch all student data in database
   const studentsList = await knex.select('id', 'email').from('student');
-  const studentEmailIdMap = studentsList.reduce((acc, val) => {
-    acc[val.email] = val.id;
-    return acc;
-  }, {});
 
   // after adding teachers, setup mapping
   const teacherStudentMaps = getMapping();
   const teacherStudentRows = teacherStudentMaps.map(row => ({
-    id: knex.raw('UUID()'),
     teacher_id: teachersList.find(t => t.email === row[0]).id,
     student_id: studentsList.find(s => s.email === row[1]).id,
   }));

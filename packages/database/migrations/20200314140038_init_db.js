@@ -1,7 +1,10 @@
 exports.up = knex => {
   return knex.schema
     .createTable('teacher', table => {
-      table.uuid('id').notNullable();
+      table
+        .uuid('id')
+        .primary()
+        .notNullable();
       table.string('first_name', 255).notNullable();
       table.string('last_name', 255).notNullable();
       table.string('email', 320).notNullable();
@@ -9,9 +12,13 @@ exports.up = knex => {
     })
     .alterTable('teacher', table => {
       table.unique('id');
+      table.unique('email');
     })
     .createTable('student', table => {
-      table.uuid('id').notNullable();
+      table
+        .uuid('id')
+        .primary()
+        .notNullable();
       table.string('first_name', 255).notNullable();
       table.string('last_name', 255).notNullable();
       table.string('email', 320).notNullable();
@@ -23,9 +30,9 @@ exports.up = knex => {
     })
     .alterTable('student', table => {
       table.unique('id');
+      table.unique('email');
     })
     .createTable('teacher_student', table => {
-      table.uuid('id').notNullable();
       table
         .uuid('teacher_id')
         .notNullable()
@@ -34,12 +41,14 @@ exports.up = knex => {
         .uuid('student_id')
         .notNullable()
         .references('student.id');
+      table.primary(['teacher_id', 'student_id']);
+      table.timestamps(false, true);
     });
 };
 
 exports.down = knex => {
   return knex.schema
-    .dropTable('teacher_student')
-    .dropTable('teacher')
-    .dropTable('student');
+    .dropTableIfExists('teacher_student')
+    .dropTableIfExists('teacher')
+    .dropTableIfExists('student');
 };
