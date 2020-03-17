@@ -6,6 +6,7 @@ export enum ApiErrorCode {
   UNABLE_TO_REGISTER_STUDENT,
   UNABLE_TO_SUSPEND_STUDENT,
   UNABLE_TO_NOTIFY_STUDENTS,
+  UNACCEPTABLE_CONTENT_TYPE = 2000,
 }
 
 interface ApiErrorJsonOutput {
@@ -31,6 +32,8 @@ export default class ApiError extends ServerError {
         return 'Unable to suspend student';
       case ApiErrorCode.UNABLE_TO_NOTIFY_STUDENTS:
         return 'Unable to notify students';
+      case ApiErrorCode.UNACCEPTABLE_CONTENT_TYPE:
+        return 'Content-type not accepted by endpoint';
       default:
         return 'Server error';
     }
@@ -43,6 +46,7 @@ export default class ApiError extends ServerError {
       case ApiErrorCode.UNABLE_TO_REGISTER_STUDENT:
       case ApiErrorCode.UNABLE_TO_SUSPEND_STUDENT:
       case ApiErrorCode.UNABLE_TO_NOTIFY_STUDENTS:
+      case ApiErrorCode.UNACCEPTABLE_CONTENT_TYPE:
         return 400;
       default:
         return 500;
