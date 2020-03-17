@@ -2,6 +2,7 @@ import { Next } from 'koa';
 import { ExtendedContext } from '../../types/koaExtended';
 import Student, { StudentStatus } from '../../models/Student';
 import ApiError, { ApiErrorCode } from '../../errors/ApiError';
+import { updateDatabaseErrorMessage } from '../../errors/messages';
 
 const suspendStudent = async (ctx: ExtendedContext, next: Next): Promise<void> => {
   const { student } = ctx.request.body;
@@ -23,12 +24,8 @@ const suspendStudent = async (ctx: ExtendedContext, next: Next): Promise<void> =
         status: StudentStatus.SUSPENDED,
       })
       .where('email', student)
-      .catch(err => {
-        console.log(err);
-        throw new ApiError(
-          ApiErrorCode.UNABLE_TO_SUSPEND_STUDENT,
-          'Error occurred while updating database'
-        );
+      .catch(() => {
+        throw new ApiError(ApiErrorCode.UNABLE_TO_SUSPEND_STUDENT, updateDatabaseErrorMessage());
       });
 
     ctx.json({ statusCode: 204 });

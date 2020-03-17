@@ -13,6 +13,10 @@ export interface StudentsEmailArrayResponse extends BodyInput {
   students: string[];
 }
 
+export interface RecipientsArrayResponse extends BodyInput {
+  recipients: string[];
+}
+
 interface JsonInputParams {
   body?: BodyInput;
   statusCode?: number;

@@ -11,3 +11,7 @@ export const errorStudentAlreadyRegisteredMessage = (students: string[], teacher
   `One or more of following students[${students.join(
     ', '
   )}] is/are already registered under teacher[${teacher}]`;
+
+export const updateDatabaseErrorMessage = (): string => 'Error occurred while updating database';
+
+export const invalidInputsMessage = (): string => 'Invalid inputs';

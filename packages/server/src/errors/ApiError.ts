@@ -5,6 +5,7 @@ export enum ApiErrorCode {
   UNKNOWN_TEACHER_OR_STUDENT,
   UNABLE_TO_REGISTER_STUDENT,
   UNABLE_TO_SUSPEND_STUDENT,
+  UNABLE_TO_NOTIFY_STUDENTS,
 }
 
 interface ApiErrorJsonOutput {
@@ -28,6 +29,8 @@ export default class ApiError extends ServerError {
         return 'Unable to register student';
       case ApiErrorCode.UNABLE_TO_SUSPEND_STUDENT:
         return 'Unable to suspend student';
+      case ApiErrorCode.UNABLE_TO_NOTIFY_STUDENTS:
+        return 'Unable to notify students';
       default:
         return 'Server error';
     }
@@ -39,6 +42,7 @@ export default class ApiError extends ServerError {
       case ApiErrorCode.UNKNOWN_TEACHER_OR_STUDENT:
       case ApiErrorCode.UNABLE_TO_REGISTER_STUDENT:
       case ApiErrorCode.UNABLE_TO_SUSPEND_STUDENT:
+      case ApiErrorCode.UNABLE_TO_NOTIFY_STUDENTS:
         return 400;
       default:
         return 500;
