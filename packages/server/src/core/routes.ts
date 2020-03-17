@@ -1,7 +1,9 @@
 import Koa, { Next } from 'koa';
 import Router from '@koa/router';
 import bodyParser from 'koa-bodyparser';
-import { register, commonStudents } from '../controllers/api';
+import commonStudents from '../controllers/api/commonStudents';
+import registerStudents from '../controllers/api/registerStudents';
+import suspendStudent from '../controllers/api/suspendStudent';
 import errorCatcher from '../middlewares/errorCatcher';
 import { ExtendedContext, ExtendedMiddleware } from '../types/koaExtended';
 
@@ -13,8 +15,9 @@ function initApiRoutes(): Router<{}, ExtendedMiddleware> {
   const apiRouter = new Router<{}, ExtendedMiddleware>();
 
   apiRouter.use(errorCatcher);
-  apiRouter.post('/register', register);
+  apiRouter.post('/register', registerStudents);
   apiRouter.get('/commonstudents', commonStudents);
+  apiRouter.post('/suspend', suspendStudent);
 
   return apiRouter;
 }

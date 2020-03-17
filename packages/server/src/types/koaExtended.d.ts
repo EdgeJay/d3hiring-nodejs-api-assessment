@@ -9,6 +9,10 @@ interface BodyInput {
   [key: string]: unknown;
 }
 
+interface StudentsEmailArrayResponse extends BodyInput {
+  students: string[];
+}
+
 interface JsonInputParams {
   body?: BodyInput;
   statusCode?: number;
