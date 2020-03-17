@@ -33,7 +33,9 @@
     "dev": "concurrently \"tsc --watch\" \"nodemon -L\"",
     "start": "node --es-module-specifier-resolution=node ./dist/index.js",
     "test": "tsc && ava --verbose --config ./ava.config.js",
-    "build": "yarn run clean && tsc"
+    "build": "yarn run clean && tsc",
+    "docker:build": "docker build -t tchr-server-image .",
+    "docker:run": "docker run -d --rm -p 3002:3002 --name tchr-server tchr-server-image"
   },
   "bugs": {
     "url": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/issues"

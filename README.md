@@ -98,8 +98,6 @@ Runs eslint checks on all packages.
 
 ### yarn run build
 
-> TODO. Setup script
-
 Creates production build for all packages.
 
 ## Git
