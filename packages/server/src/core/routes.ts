@@ -1,8 +1,13 @@
 import Koa, { Next } from 'koa';
 import Router from '@koa/router';
 import bodyParser from 'koa-bodyparser';
-import { register } from '../controllers/api';
+import commonStudents from '../controllers/api/commonStudents';
+import registerStudents from '../controllers/api/registerStudents';
+import suspendStudent from '../controllers/api/suspendStudent';
+import retrieveForNotifications from '../controllers/api/retrieveForNotifications';
+import errorCatcher from '../middlewares/errorCatcher';
 import { ExtendedContext, ExtendedMiddleware } from '../types/koaExtended';
+import ApiError, { ApiErrorCode } from '../errors/ApiError';
 
 /**
  * This function will provide router that handles /api/* requests
@@ -11,7 +16,11 @@ import { ExtendedContext, ExtendedMiddleware } from '../types/koaExtended';
 function initApiRoutes(): Router<{}, ExtendedMiddleware> {
   const apiRouter = new Router<{}, ExtendedMiddleware>();
 
-  apiRouter.post('/register', register);
+  apiRouter.use(errorCatcher);
+  apiRouter.post('/register', registerStudents);
+  apiRouter.get('/commonstudents', commonStudents);
+  apiRouter.post('/suspend', suspendStudent);
+  apiRouter.post('/retrievefornotifications', retrieveForNotifications);
 
   return apiRouter;
 }
@@ -41,10 +50,19 @@ export function jsonResponseHelper() {
  * @param {object} app Koa app instance
  */
 export function initRoutes(app: Koa): void {
-  // bodyParser helps to parse request body and store it under ctx.request.body
-  app.use(bodyParser());
-
   app.use(jsonResponseHelper());
+
+  // bodyParser helps to parse request body and store it under ctx.request.body
+  app.use(
+    bodyParser({
+      enableTypes: ['json'],
+      onerror: (err: Error, context: Koa.Context) => {
+        const ctx = context as ExtendedContext;
+        const apiError = new ApiError(ApiErrorCode.UNACCEPTABLE_CONTENT_TYPE);
+        ctx.json({ body: { ...apiError.toJson() }, statusCode: apiError.statusCode });
+      },
+    })
+  );
 
   const router = new Router<{}, ExtendedMiddleware>();
   const apiRouter = initApiRoutes();

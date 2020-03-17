@@ -1,4 +1,10 @@
 import Knex from 'knex';
+import objection from 'objection';
+
+// Deliberately written in this manner as
+// ESM implementation in Node.js does not support
+// named imports yet.
+const { knexSnakeCaseMappers, Model } = objection;
 
 export default class Database {
   static _instance: Database;
@@ -29,7 +35,13 @@ export default class Database {
         password,
         database,
       },
+      ...knexSnakeCaseMappers(),
     });
+
+    // Provide Knex instance to ORM library "objection",
+    // once this is added it will be available to all models.
+    Model.knex(this._client);
+
     return this._client;
   }
 
