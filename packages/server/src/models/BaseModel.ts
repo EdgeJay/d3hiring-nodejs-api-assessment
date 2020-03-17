@@ -1,5 +1,6 @@
 import objection from 'objection';
 import uuid from 'uuid';
+import { dateStringForDatabase } from '../utils/date';
 
 // Deliberately written in this manner as
 // ESM implementation in Node.js does not support
@@ -62,12 +63,13 @@ export default class BaseModel extends Model {
 
   $beforeInsert(): void {
     this.id = uuid.v4();
-    this.createdAt = new Date().toISOString();
-    this.updatedAt = new Date().toISOString();
+    const now = dateStringForDatabase(new Date());
+    this.createdAt = now;
+    this.updatedAt = now;
   }
 
   $beforeUpdate(): void {
-    this.updatedAt = new Date().toISOString();
+    this.updatedAt = dateStringForDatabase(new Date());
   }
 
   getFullName(): string {

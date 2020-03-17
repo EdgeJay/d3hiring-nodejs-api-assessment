@@ -1,4 +1,5 @@
 import objection from 'objection';
+import { dateStringForDatabase } from '../utils/date';
 
 const { Model } = objection;
 
@@ -29,11 +30,12 @@ export default class TeacherStudent extends Model {
   };
 
   $beforeInsert(): void {
-    this.createdAt = new Date().toISOString();
-    this.updatedAt = new Date().toISOString();
+    const now = dateStringForDatabase(new Date());
+    this.createdAt = now;
+    this.updatedAt = now;
   }
 
   $beforeUpdate(): void {
-    this.updatedAt = new Date().toISOString();
+    this.updatedAt = dateStringForDatabase(new Date());
   }
 }

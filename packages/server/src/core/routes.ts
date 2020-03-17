@@ -2,6 +2,7 @@ import Koa, { Next } from 'koa';
 import Router from '@koa/router';
 import bodyParser from 'koa-bodyparser';
 import { register, commonStudents } from '../controllers/api';
+import errorCatcher from '../middlewares/errorCatcher';
 import { ExtendedContext, ExtendedMiddleware } from '../types/koaExtended';
 
 /**
@@ -11,6 +12,7 @@ import { ExtendedContext, ExtendedMiddleware } from '../types/koaExtended';
 function initApiRoutes(): Router<{}, ExtendedMiddleware> {
   const apiRouter = new Router<{}, ExtendedMiddleware>();
 
+  apiRouter.use(errorCatcher);
   apiRouter.post('/register', register);
   apiRouter.get('/commonstudents', commonStudents);
 

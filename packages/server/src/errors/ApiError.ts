@@ -2,8 +2,8 @@ import ServerError from './ServerError';
 
 export enum ApiErrorCode {
   STUDENTS_ALREADY_ASSIGNED = 1000,
-  TEACHER_NOT_FOUND,
-  STUDENT_NOT_FOUND,
+  UNKNOWN_TEACHER_OR_STUDENT,
+  UNABLE_TO_REGISTER_STUDENT,
 }
 
 interface ApiErrorJsonOutput {
@@ -12,6 +12,7 @@ interface ApiErrorJsonOutput {
     type: string;
     message: string;
     details: string;
+    transactionId: string;
   };
 }
 
@@ -20,20 +21,20 @@ export default class ApiError extends ServerError {
     switch (errorCode) {
       case ApiErrorCode.STUDENTS_ALREADY_ASSIGNED:
         return 'Students already assigned';
-      case ApiErrorCode.TEACHER_NOT_FOUND:
-        return 'Teacher not found';
-      case ApiErrorCode.STUDENT_NOT_FOUND:
-        return 'Student not found';
+      case ApiErrorCode.UNKNOWN_TEACHER_OR_STUDENT:
+        return 'Unknown teacher or student';
+      case ApiErrorCode.UNABLE_TO_REGISTER_STUDENT:
+        return 'Unable to register student';
       default:
-        return '';
+        return 'Server error';
     }
   }
 
   static getStatusCode(errorCode: ApiErrorCode): number {
     switch (errorCode) {
       case ApiErrorCode.STUDENTS_ALREADY_ASSIGNED:
-      case ApiErrorCode.TEACHER_NOT_FOUND:
-      case ApiErrorCode.STUDENT_NOT_FOUND:
+      case ApiErrorCode.UNKNOWN_TEACHER_OR_STUDENT:
+      case ApiErrorCode.UNABLE_TO_REGISTER_STUDENT:
         return 400;
       default:
         return 500;
@@ -42,12 +43,8 @@ export default class ApiError extends ServerError {
 
   errorCode: number;
 
-  statusCode: number;
-
-  details: string;
-
-  constructor(errorCode: ApiErrorCode, details = '') {
-    super(details);
+  constructor(errorCode: ApiErrorCode, details = '', transactionId = '') {
+    super(details, transactionId);
     this.message = ApiError.getMessage(errorCode);
     this.errorCode = errorCode;
     this.statusCode = ApiError.getStatusCode(errorCode);
@@ -62,6 +59,7 @@ export default class ApiError extends ServerError {
         type: this.name,
         message: this.message,
         details: this.details,
+        transactionId: this.transactionId,
       },
     };
   }
