@@ -15,16 +15,9 @@ FROM node:13.10.1-alpine AS release
 
 WORKDIR /var/www/tchr
 
+COPY --from=base /var/www/tchr/.env ./.env
 COPY --from=base /var/www/tchr/dist ./dist
 COPY --from=base /var/www/tchr/package.json ./package.json
-
-RUN touch ./.env
-RUN echo "NODE_PORT=3002" >> ./.env
-RUN echo "DB_CLIENT=mysql" >> ./.env
-RUN echo "DB_HOST=localhost" >> ./.env
-RUN echo "DB_NAME=tchr" >> ./.env
-RUN echo "DB_USER=tchr_db_user" >> ./.env
-RUN echo "DB_PASS=chercher" >> ./.env
 
 RUN ls -al
 RUN yarn install --production
