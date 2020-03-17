@@ -22,14 +22,16 @@ const registerStudents = async (ctx: ExtendedContext, next: Next): Promise<void>
       .catch(() => {
         throw new ApiError(
           ApiErrorCode.UNKNOWN_TEACHER_OR_STUDENT,
-          errorFetchTeacherMessage(teacher)
+          errorFetchTeacherMessage(teacher),
+          ctx.state.transactionId
         );
       });
 
     if (!teacherObj) {
       throw new ApiError(
         ApiErrorCode.UNKNOWN_TEACHER_OR_STUDENT,
-        unableToRegisterMessage(students, teacher)
+        unableToRegisterMessage(students, teacher),
+        ctx.state.transactionId
       );
     }
 
@@ -38,7 +40,8 @@ const registerStudents = async (ctx: ExtendedContext, next: Next): Promise<void>
     if (studentsToBeRegistered.length < 1) {
       throw new ApiError(
         ApiErrorCode.UNKNOWN_TEACHER_OR_STUDENT,
-        unableToRegisterMessage(students, teacher)
+        unableToRegisterMessage(students, teacher),
+        ctx.state.transactionId
       );
     }
 
@@ -53,12 +56,14 @@ const registerStudents = async (ctx: ExtendedContext, next: Next): Promise<void>
         if (err.name === 'DataError') {
           throw new ApiError(
             ApiErrorCode.UNABLE_TO_REGISTER_STUDENT,
-            errorRegisterStudentMessage(students, teacher)
+            errorRegisterStudentMessage(students, teacher),
+            ctx.state.transactionId
           );
         } else if (err.name === 'UniqueViolationError') {
           throw new ApiError(
             ApiErrorCode.UNABLE_TO_REGISTER_STUDENT,
-            errorStudentAlreadyRegisteredMessage(students, teacher)
+            errorStudentAlreadyRegisteredMessage(students, teacher),
+            ctx.state.transactionId
           );
         }
         throw err;

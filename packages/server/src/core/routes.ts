@@ -6,16 +6,18 @@ import registerStudents from '../controllers/api/registerStudents';
 import suspendStudent from '../controllers/api/suspendStudent';
 import retrieveForNotifications from '../controllers/api/retrieveForNotifications';
 import errorCatcher from '../middlewares/errorCatcher';
-import { ExtendedContext, ExtendedMiddleware } from '../types/koaExtended';
+import transaction from '../middlewares/transaction';
+import { ExtendedContext, ExtendedMiddleware, ExtendedState } from '../types/koaExtended';
 import ApiError, { ApiErrorCode } from '../errors/ApiError';
 
 /**
  * This function will provide router that handles /api/* requests
  * Add api routes here
  */
-function initApiRoutes(): Router<{}, ExtendedMiddleware> {
-  const apiRouter = new Router<{}, ExtendedMiddleware>();
+function initApiRoutes(): Router<ExtendedState, ExtendedMiddleware> {
+  const apiRouter = new Router<ExtendedState, ExtendedMiddleware>();
 
+  apiRouter.use(transaction);
   apiRouter.use(errorCatcher);
   apiRouter.post('/register', registerStudents);
   apiRouter.get('/commonstudents', commonStudents);
@@ -64,7 +66,7 @@ export function initRoutes(app: Koa): void {
     })
   );
 
-  const router = new Router<{}, ExtendedMiddleware>();
+  const router = new Router<ExtendedState, ExtendedMiddleware>();
   const apiRouter = initApiRoutes();
 
   router.use('/api', apiRouter.routes(), apiRouter.allowedMethods());
