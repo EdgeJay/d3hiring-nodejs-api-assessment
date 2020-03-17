@@ -9,7 +9,7 @@
     "dist/*"
   ],
   "execMap": {
-    "js": "node --es-module-specifier-resolution=node"
+    "js": "node --es-module-specifier-resolution=node --inspect"
   },
   "ext": "js json"
 }
