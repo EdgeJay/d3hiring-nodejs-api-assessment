@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "lerna run lint",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "build": "lerna run build"
   },
   "repository": {
     "type": "git",
