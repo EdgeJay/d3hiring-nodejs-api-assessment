@@ -49,7 +49,6 @@ const registerStudents = async (ctx: ExtendedContext, next: Next): Promise<void>
           studentId: student.id,
         }))
       )
-      .debug()
       .catch(err => {
         if (err.name === 'DataError') {
           throw new ApiError(

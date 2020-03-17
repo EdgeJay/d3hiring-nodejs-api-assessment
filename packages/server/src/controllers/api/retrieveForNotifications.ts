@@ -45,10 +45,7 @@ const retrieveForNotifications = async (ctx: ExtendedContext, next: Next): Promi
     body.recipients = extractNotifiableStudentEmails(students);
   } else {
     // fetch all students registered under teacher
-    const teacherStudents = await Teacher.relatedQuery<Student>('students')
-      .for(teacher.id)
-      .debug();
-
+    const teacherStudents = await Teacher.relatedQuery<Student>('students').for(teacher.id);
     body.recipients = extractNotifiableStudentEmails(teacherStudents);
   }
 
