@@ -51,7 +51,7 @@ export default class BaseModel extends Model {
   }: ModelJsonSchemaOverrides = {}): ModelJsonSchema {
     return {
       type: 'object',
-      required: ['firstName', 'lastName', 'email', ...required],
+      required: [...required],
       properties: {
         firstName: { type: 'string', minLength: 1, maxLength: 255 },
         lastName: { type: 'string', minLength: 1, maxLength: 255 },

@@ -31,7 +31,7 @@
     "lint": "eslint \"./src/**/*.ts\"",
     "dev": "concurrently \"tsc --watch\" \"nodemon -L\"",
     "start": "node --es-module-specifier-resolution=node ./dist/index.js",
-    "test": "tsc && ava --config ./ava.config.js"
+    "test": "tsc && ava --verbose --config ./ava.config.js"
   },
   "bugs": {
     "url": "https://github.com/EdgeJay/d3hiring-nodejs-api-assessment/issues"

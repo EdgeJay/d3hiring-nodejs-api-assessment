@@ -4,6 +4,7 @@ import bodyParser from 'koa-bodyparser';
 import commonStudents from '../controllers/api/commonStudents';
 import registerStudents from '../controllers/api/registerStudents';
 import suspendStudent from '../controllers/api/suspendStudent';
+import retrieveForNotifications from '../controllers/api/retrieveForNotifications';
 import errorCatcher from '../middlewares/errorCatcher';
 import { ExtendedContext, ExtendedMiddleware } from '../types/koaExtended';
 
@@ -18,6 +19,7 @@ function initApiRoutes(): Router<{}, ExtendedMiddleware> {
   apiRouter.post('/register', registerStudents);
   apiRouter.get('/commonstudents', commonStudents);
   apiRouter.post('/suspend', suspendStudent);
+  apiRouter.post('/retrievefornotifications', retrieveForNotifications);
 
   return apiRouter;
 }

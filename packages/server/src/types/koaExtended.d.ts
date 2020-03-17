@@ -9,7 +9,7 @@ interface BodyInput {
   [key: string]: unknown;
 }
 
-interface StudentsEmailArrayResponse extends BodyInput {
+export interface StudentsEmailArrayResponse extends BodyInput {
   students: string[];
 }
 
