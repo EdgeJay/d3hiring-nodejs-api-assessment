@@ -1,5 +1,12 @@
 version: '2.0'
 services:
+  # tchr-nginx:
+  #  container_name: tchr-nginx
+  #  image: edgejay/tchr-nginx
+  #  ports:
+  #  - "80:80"
+  #  networks:
+  #  - tchr-network
   tchr-mysql:
     container_name: tchr-mysql
     image: mysql:5.7
