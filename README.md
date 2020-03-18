@@ -45,12 +45,28 @@ DB_USER=tchr_db_user
 DB_PASS=tchr_db_user_password
 ```
 
+Open `docker-compose.yml` file and set MySQL database root user's password by changing the following line:
+
+`MYSQL_ROOT_PASSWORD=root_password`
+
 Open terminal and run the following commands in project root folder:
 
-1. Run `yarn install` command
-2. Run `yarn run init:db` command
-3. cd to `packages/server` folder
-4. Run `yarn run dev` command
+1. `yarn install`
+2. `docker-compose build`
+3. `docker-compose up -d`
+4. Run `docker ps` and make sure `tchr-mysql` and `tchr-server` containers are running.
+
+To setup database:
+
+1. Open SQL client and connect to MySQL database at `127.0.0.1:3306`, using username(root) and password(set in docker-compose.yml file).
+2. Load SQL script at `packages/database/scripts/bootstrap.sql` and replace `'your_db_password_here'` (Make sure it matches value assigned to DB_PASS variable in `.env` files).
+3. Run all SQL queries.
+4. Make sure `tchr` database is created and `tchr_db_user` is added to `mysql.user` table.
+5. cd to `packages/database` folder.
+6. Run `yarn run migrate` to create database tables.
+7. Run `yarn run seed` to seed database tables with data.
+
+And you are good to go!
 
 ## Assessment goals
 
