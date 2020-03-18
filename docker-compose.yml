@@ -15,7 +15,7 @@ services:
     - "3306:3306"
     environment:
     # passwords shouldn't be exposed here, can use secrets to replace password texts
-    - MYSQL_ROOT_PASSWORD=1q2w3e4r5t6y
+    - MYSQL_ROOT_PASSWORD=your_db_password_here
     volumes:
     - tchr-mysql-datavolume:/var/lib/mysql
     networks:
