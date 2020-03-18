@@ -139,13 +139,22 @@ This repo uses [ava](https://github.com/avajs/ava) as the test runner.
 
 For packages that use Typescript, files must be compiled into Javascript first before running unit tests, as current methods to get `ava` to run tests on Typescript files on-the-fly are not straightforward.
 
+## (Re)building Docker image for server app
+
+Note: Dockerfile copies `/packages/server/.env` file when building Docker image, make sure `.env` is configured properly before building image.
+
+```
+cd packages/server
+yarn run docker:build // runs the following command: docker build -t edgejay/tchr-server-image .
+```
+
 ## Remote server setup
 
 > TODO. Add diagrams.
 
 ### Deploying Docker containers in DigitalOcean droplet
 
-1. docker login -u <username> -p <password>
+1. docker login -u <username> -p <password> OR cat ~/docker-password.txt | docker login -u <username> --password-stdin
 2. docker-machine create --digitalocean-size "s-1vcpu-1gb" --driver digitalocean --digitalocean-access-token <personal_access_token> <machine_name>
 3. eval $(docker-machine env <machine_name>) // Load env variables
 4. docker container run --name <container_name> --publish <exposed_port>:<internal_port> --env MYSQL_ROOT_PASSWORD=<some_value> --detach mysql:5.7
