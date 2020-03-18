@@ -1,11 +1,15 @@
 import Koa from 'koa';
 import { initDotEnv, getNodePort, getDatabaseConfig } from './core/env';
 import Database from './core/Database';
+import { initLogger } from './core/logger';
 import { initRoutes } from './core/routes';
 
 async function start(): Promise<void> {
   // create new Koa instance that will be serving endpoints from this app
   const app = new Koa();
+
+  // init logging
+  initLogger(app);
 
   // fetch and setup dotenv vars
   const env = initDotEnv();
@@ -21,7 +25,11 @@ async function start(): Promise<void> {
 
     initRoutes(app);
 
-    app.listen(getNodePort(env));
+    const port = getNodePort(env);
+    app.listen(port, (): void => {
+      // eslint-disable-next-line
+      console.log(`Server started listening at port ${port}`);
+    });
   } else {
     throw new Error('Missing dotenv configuration');
   }

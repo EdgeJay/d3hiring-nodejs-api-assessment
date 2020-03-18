@@ -1,6 +1,9 @@
 export const errorFetchTeacherMessage = (teacher: string): string =>
   `Error encountered while fetching teacher[${teacher}] info`;
 
+export const errorFetchStudentMessage = (student: string): string =>
+  `Error encountered while fetching student[${student}] info`;
+
 export const unableToRegisterMessage = (students: string[], teacher: string): string =>
   `Unable to register students[${students.join(', ')}] under teacher[${teacher}]`;
 

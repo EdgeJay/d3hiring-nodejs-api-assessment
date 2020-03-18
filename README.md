@@ -51,23 +51,23 @@ Open terminal and run the following commands:
 
 | # | User story | Completed |
 |---|---|---|
-| 1 | As a teacher, I want to register one or more students to a specified teacher. | No |
-| 2 | As a teacher, I want to retrieve a list of students common to a given list of teachers (i.e. retrieve students who are registered to ALL of the given teachers). | No |
-| 3 | As a teacher, I want to suspend a specified student. | No |
-| 4 | As a teacher, I want to retrieve a list of students who can receive a given notification. | No |
+| 1 | As a teacher, I want to register one or more students to a specified teacher. | Yes |
+| 2 | As a teacher, I want to retrieve a list of students common to a given list of teachers (i.e. retrieve students who are registered to ALL of the given teachers). | Yes |
+| 3 | As a teacher, I want to suspend a specified student. | Yes |
+| 4 | As a teacher, I want to retrieve a list of students who can receive a given notification. | Yes |
 
 ---
 
 | Task | Completed |
 |---|---|
-| Setup eslint | Done |
+| Setup eslint | Yes |
 | Write unit tests | In Progress |
-| Create server app | In Progress |
+| Create server app | Yes |
 | Create client app | No |
 | Create test script | Yes |
-| Create lint script | No |
-| Create dev script | In Progress |
-| Create build script | No |
+| Create lint script | Yes |
+| Create dev script | Yes |
+| Create build script | Yes |
 
 ## Security concerns
 
@@ -82,10 +82,6 @@ Open terminal and run the following commands:
 - Invalid email inputs?
 - Guessing of email addresses by brute force?
 
-## Assumptions
-
-> TODO. Any assumptions about app behaviours can be added here
-
 ## Available scripts
 
 ### yarn run test
@@ -97,8 +93,6 @@ Runs unit tests on all packages.
 Runs eslint checks on all packages.
 
 ### yarn run build
-
-> TODO. Setup script
 
 Creates production build for all packages.
 
@@ -119,37 +113,64 @@ The repo is structured to be managed by [lerna.js](https://lerna.js.org/).
 
 This repo used the following 3rd-party libraries for various tasks:
 
-### Koa.js
+### [Koa.js](https://koajs.com/)
 
 Backbone of server app. Handles routing, incoming/outgoing requests/responses. Very similar to Express.
 
-### Knex
+### [Knex](http://knexjs.org/)
 
 Database query builder, migration and seeding.
 
-### dotenv
+### [Objection](https://vincit.github.io/objection.js/)
+
+ORM for Knex.
+
+### [dotenv](https://github.com/motdotla/dotenv)
 
 Loads app environment variables from .env files.
+
+### [Pino](https://github.com/pinojs/pino)
+
+Node.js logger.
 
 ## Unit tests
 
 This repo uses [ava](https://github.com/avajs/ava) as the test runner.
 
-For packages that use Typescript, files must be compiled into Javascript first before running unit tests, as current methods to get `ava` to run tests on Typescript files on-the=fly are not straightforward.
+For packages that use Typescript, files must be compiled into Javascript first before running unit tests, as current methods to get `ava` to run tests on Typescript files on-the-fly are not straightforward.
 
 ## Remote server setup
 
 > TODO. Add diagrams.
 
+### Deploying Docker containers in DigitalOcean droplet
+
+1. docker login -u <username> -p <password>
+2. docker-machine create --digitalocean-size "s-1vcpu-1gb" --driver digitalocean --digitalocean-access-token <personal_access_token> <machine_name>
+3. eval $(docker-machine env <machine_name>) // Load env variables
+4. docker container run --name <container_name> --publish <exposed_port>:<internal_port> --env MYSQL_ROOT_PASSWORD=<some_value> --detach mysql:5.7
+5. docker ps // Check if container is running
+6. Repeat steps 4 - 5 to add more containers.
+
+Note: `*-alpine` images do not have `bash` installed, use `ash`.
+
+### Deploying Docker containers in DigitalOcean droplet using docker-compose
+
+
+
 ## Known issues
 
 ### ESM module loader is experimental.
+
+One of the goals when building the server app is for it to be "babel-less", meaning able to run the app without transpiling its codebase first. However there are some drawbacks with this approach.
 
 When server app is initialised, the following message will appear:
 
 `(node:35224) ExperimentalWarning: The ESM module loader is experimental.`
 
 This message appears since the server app is developed as an ESM module, and running/loading of ESM modules are still part of experimental features. It should go away once ESM is part of Node.js stable release.
+
+Another alternative is to import the [esm node module](https://www.npmjs.com/package/esm).
 
 ### Eslint cannot be run in "module" type packages.
 

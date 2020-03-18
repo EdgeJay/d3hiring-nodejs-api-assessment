@@ -17,7 +17,11 @@ const retrieveForNotifications = async (ctx: ExtendedContext, next: Next): Promi
   const { teacher: teacherEmail, notification } = ctx.request.body;
 
   if (!(typeof teacherEmail === 'string' && typeof notification === 'string')) {
-    throw new ApiError(ApiErrorCode.UNABLE_TO_NOTIFY_STUDENTS, invalidInputsMessage());
+    throw new ApiError(
+      ApiErrorCode.UNABLE_TO_NOTIFY_STUDENTS,
+      invalidInputsMessage(),
+      ctx.state.transactionId
+    );
   }
 
   // fetch teacher info, make sure it is valid teacher
@@ -27,7 +31,11 @@ const retrieveForNotifications = async (ctx: ExtendedContext, next: Next): Promi
 
   // do not proceed if teacher not found in database
   if (!teacher) {
-    throw new ApiError(ApiErrorCode.UNABLE_TO_NOTIFY_STUDENTS, invalidInputsMessage());
+    throw new ApiError(
+      ApiErrorCode.UNABLE_TO_NOTIFY_STUDENTS,
+      invalidInputsMessage(),
+      ctx.state.transactionId
+    );
   }
 
   // Extract student email mentions

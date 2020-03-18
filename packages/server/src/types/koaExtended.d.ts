@@ -29,4 +29,8 @@ export interface ExtendedMiddleware {
   json: (params: JsonInputParams) => void;
 }
 
-export type ExtendedContext = ParameterizedContext<{}, ExtendedMiddleware>;
+export interface ExtendedState {
+  transactionId: string;
+}
+
+export type ExtendedContext = ParameterizedContext<ExtendedState, ExtendedMiddleware>;
