@@ -15,13 +15,42 @@ Make sure the following are installed in development machine:
 
 ### Installation steps
 
-Open terminal and run the following commands:
+Create `.env` file under `packages/server` folder with the following content:
 
-1. cd to project root folder
-2. Run `yarn install` command
-3. Run `yarn run init:db` command
-4. cd to `packages/server` folder
-5. Run `yarn run dev` command
+```
+NODE_PORT=3002
+
+# Database settings
+DB_CLIENT=mysql
+
+# mysql instance within same Docker bridge network
+DB_HOST=tchr-mysql
+DB_NAME=tchr
+DB_USER=tchr_db_user
+DB_PASS=tchr_db_user_password
+```
+
+Create `.env` file under `packages/database` folder with the following content:
+
+```
+NODE_PORT=3002
+
+# Database settings
+DB_CLIENT=mysql
+
+# mysql instance within same Docker bridge network
+DB_HOST=localhost
+DB_NAME=tchr
+DB_USER=tchr_db_user
+DB_PASS=tchr_db_user_password
+```
+
+Open terminal and run the following commands in project root folder:
+
+1. Run `yarn install` command
+2. Run `yarn run init:db` command
+3. cd to `packages/server` folder
+4. Run `yarn run dev` command
 
 ## Assessment goals
 
@@ -37,15 +66,17 @@ Open terminal and run the following commands:
 
 ### Optional stretch goal #1
 
-- Deploy as Docker image to Heroku
+- ~~Deploy as Docker image to Heroku~~
+- Deployed to Digital Ocean droplet instead
 
 ### Optional stretch goal #2
 
-- Create frontend web application that can allow teachers to perform administrative functions via browser.
+- [NOT DONE] Create frontend web application that can allow teachers to perform administrative functions via browser.
+
 
 ### Optional stretch goal #3
 
-- Server-side rendered frontend web application.
+- [NOT DONE] Server-side rendered frontend web application.
 
 ## Tasks & user stories
 
@@ -165,7 +196,10 @@ Note: `*-alpine` images do not have `bash` installed, use `ash`.
 
 ### Deploying Docker containers in DigitalOcean droplet using docker-compose
 
-
+1. docker login -u <username> -p <password> OR cat ~/docker-password.txt | docker login -u <username> --password-stdin
+2. docker-machine create --digitalocean-size "s-1vcpu-1gb" --driver digitalocean --digitalocean-access-token <personal_access_token> <machine_name>
+3. eval $(docker-machine env <machine_name>) // Load env variables
+4. docker-compose up -d
 
 ## Known issues
 
