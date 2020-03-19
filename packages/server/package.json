@@ -31,6 +31,7 @@
     "clean": "rm -rf ./dist",
     "lint": "eslint \"./src/**/*.ts\"",
     "dev": "concurrently \"tsc --watch\" \"nodemon -L | pino-pretty\"",
+    "dev:test": "tsc --watch",
     "start": "node --es-module-specifier-resolution=node ./dist/index.js",
     "test": "tsc && ava --verbose --config ./ava.config.js",
     "build": "yarn run clean && tsc",
