@@ -47,3 +47,20 @@ test('ApiError.toJson() should return object in expected format even if error co
     },
   });
 });
+
+test('ApiError.toJson() should return object even if details and transaction ID are not provided', t => {
+  const errorCode = 0;
+  const message = ApiError.getMessage(errorCode);
+  const apiError = new ApiError(errorCode);
+  const json = apiError.toJson();
+
+  t.deepEqual(json, {
+    error: {
+      type: 'ApiError',
+      details: '',
+      transactionId: '',
+      errorCode,
+      message,
+    },
+  });
+});
