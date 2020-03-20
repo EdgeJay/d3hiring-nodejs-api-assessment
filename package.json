@@ -1,10 +1,13 @@
 {
   "name": "d3hiring-nodejs-api-assessment",
   "version": "0.1.0",
+  "private": true,
   "description": "Technical assessment submission to D3 Hiring",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "lerna run lint",
+    "test": "lerna run test",
+    "build": "lerna run build"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,9 @@
     "test",
     "assessment"
   ],
+  "engines": {
+    "node": "13.10.1"
+  },
   "author": "Wu Huijie",
   "license": "MIT",
   "bugs": {

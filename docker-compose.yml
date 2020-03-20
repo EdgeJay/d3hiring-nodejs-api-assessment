@@ -1,0 +1,36 @@
+version: '2.0'
+services:
+  # tchr-nginx:
+  #  container_name: tchr-nginx
+  #  image: edgejay/tchr-nginx
+  #  ports:
+  #  - "80:80"
+  #  networks:
+  #  - tchr-network
+  tchr-mysql:
+    container_name: tchr-mysql
+    image: mysql:5.7
+    restart: always
+    ports:
+    - "3306:3306"
+    environment:
+    # passwords shouldn't be exposed here, can use secrets to replace password texts
+    - MYSQL_ROOT_PASSWORD=root_password
+    volumes:
+    - tchr-mysql-datavolume:/var/lib/mysql
+    networks:
+    - tchr-network
+  tchr-server:
+    container_name: tchr-server
+    build: ./packages/server
+    image: edgejay/tchr-server-image
+    ports:
+    - "3002:3002"
+    networks:
+    - tchr-network
+volumes:
+  tchr-mysql-datavolume:
+    driver: local
+networks:
+  tchr-network:
+    driver: bridge
