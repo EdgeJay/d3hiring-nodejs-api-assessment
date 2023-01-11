@@ -46,7 +46,7 @@
     "@koa/router": "^8.0.8",
     "dotenv": "^8.2.0",
     "find-config": "^1.0.0",
-    "knex": "^0.20.11",
+    "knex": "^2.4.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-pino-logger": "^2.1.3",
